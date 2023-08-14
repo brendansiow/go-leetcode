@@ -1,3 +1,3 @@
 # Leetcode With GO
 
-leetcode with my small brain.
+leetcode with my small brain. 🧠
