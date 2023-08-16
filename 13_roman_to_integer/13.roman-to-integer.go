@@ -21,8 +21,31 @@ func romanToInt(s string) int {
 		"D": 500,
 		"M": 1000,
 	}
-	print(romanMap)
-	return 0
+	fourNineRomanMap := map[string]string{
+		"V": "I",
+		"X": "I",
+		"L": "X",
+		"C": "X",
+		"D": "C",
+		"M": "C",
+	}
+	totalSum := 0
+	for i := range s {
+		// Get the character from the back
+		reverseIndex := len(s) - i - 1
+		r := s[reverseIndex]
+		num := romanMap[string(r)]
+		fourNineInitial, isFourNine := fourNineRomanMap[string(r)]
+		if reverseIndex != 0 && isFourNine && string(s[reverseIndex-1]) == fourNineInitial {
+			deduct := romanMap[fourNineInitial]
+			totalSum += num - deduct - deduct
+			continue
+		}
+		totalSum += num
+	}
+	print(totalSum)
+	print("\n\n")
+	return totalSum
 }
 
 // @lc code=end
